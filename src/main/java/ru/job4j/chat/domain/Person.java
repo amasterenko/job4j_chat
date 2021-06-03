@@ -1,7 +1,6 @@
 package ru.job4j.chat.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 import javax.persistence.*;
@@ -15,9 +14,8 @@ public class Person {
     private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) int id;
     private String name;
     private String password;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "role_id", foreignKey = @ForeignKey(name = "persons_role_id_fkey"))
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Role role;
     @OneToMany(mappedBy = "person", orphanRemoval = true, cascade = CascadeType.ALL)
     @JsonIgnore

@@ -55,6 +55,8 @@ public class MessageService {
                     .orElseThrow(NotFoundException::new);
             message.setPerson(person);
             return messages.save(message);
+        } catch (NotFoundException e) {
+            throw new NotFoundException();
         } catch (Exception e) {
             LOG.error("exception:", e);
             throw new BadRequestException();

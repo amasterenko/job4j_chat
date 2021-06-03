@@ -2,6 +2,7 @@ package ru.job4j.chat.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.chat.domain.Person;
 import ru.job4j.chat.service.PersonService;
@@ -18,11 +19,13 @@ public class PersonController {
         this.persons = persons;
     }
 
+    @PreAuthorize("hasRole('ADMINS')")
     @GetMapping("/")
     public List<Person> findAll() {
         return new ArrayList<>(this.persons.findAll());
     }
 
+    @PreAuthorize("authentication.principal.id == #id or hasRole('ADMINS')")
     @GetMapping("/{id}")
     public ResponseEntity<Person> findById(@PathVariable int id) {
         var person = this.persons.findById(id);
@@ -32,6 +35,7 @@ public class PersonController {
         );
     }
 
+    @PreAuthorize("hasRole('ADMINS')")
     @PostMapping("/")
     public ResponseEntity<Person> create(@RequestBody Person person) {
         return new ResponseEntity<>(
@@ -40,12 +44,14 @@ public class PersonController {
         );
     }
 
+    @PreAuthorize("authentication.principal.id == #person.id or hasRole('ADMINS')")
     @PutMapping("/")
     public ResponseEntity<Void> update(@RequestBody Person person) {
         this.persons.save(person);
         return ResponseEntity.ok().build();
     }
 
+    @PreAuthorize("authentication.principal.id == #id or hasRole('ADMINS')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
         Person person = new Person();

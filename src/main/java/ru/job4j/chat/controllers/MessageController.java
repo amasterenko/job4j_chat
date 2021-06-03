@@ -2,6 +2,7 @@ package ru.job4j.chat.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.chat.domain.Message;
 import ru.job4j.chat.service.MessageService;
@@ -19,11 +20,13 @@ public class MessageController {
         this.messages = messages;
     }
 
+    @PreAuthorize("hasAnyRole('ADMINS','USERS')")
     @GetMapping("/")
     public List<Message> findAll() {
         return new ArrayList<>(this.messages.findAll());
     }
 
+    @PreAuthorize("hasAnyRole('ADMINS','USERS')")
     @GetMapping("/{id}")
     public ResponseEntity<Message> findById(@PathVariable int id) {
         var message = this.messages.findById(id);
@@ -33,11 +36,13 @@ public class MessageController {
         );
     }
 
+    @PreAuthorize("hasAnyRole('ADMINS','USERS')")
     @GetMapping("/room/{id}")
     public List<Message> findByRoom(@PathVariable int id) {
         return new ArrayList<>(this.messages.findAllByRoomId(id));
     }
 
+    @PreAuthorize("authentication.principal.id == #message.person.id or hasRole('ADMINS')")
     @PostMapping("/")
     public ResponseEntity<Message> create(@RequestBody Message message) {
         return new ResponseEntity<>(
@@ -46,12 +51,14 @@ public class MessageController {
         );
     }
 
+    @PreAuthorize("authentication.principal.id == #message.person.id or hasRole('ADMINS')")
     @PutMapping("/")
     public ResponseEntity<Void> update(@RequestBody Message message) {
         this.messages.save(message);
         return ResponseEntity.ok().build();
     }
 
+    @PreAuthorize("hasRole('ADMINS')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
         Message message = new Message();

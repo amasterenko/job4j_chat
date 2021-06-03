@@ -42,4 +42,8 @@ public class RoleService {
     public void delete(Role role) {
         roles.delete(role);
     }
+
+    public Optional<Role> findByName(String name) {
+        return roles.findByName(name);
+    }
 }
