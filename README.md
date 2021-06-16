@@ -7,13 +7,20 @@ This project demonstrates the principles of the following technologies:
 - REST API  
 - JWT  
 - PostgreSQL   
+- Maven  
+- Travis C.I.  
+
+### Basic diagram of the app  
+
+![ScreenShot](img/forum_diagram.png)
 
 ### DB Schema  
 
 ![ScreenShot](img/dbschema.png)
   
 ### Features
-- User authentication based on login/password and authorization based on JSON Web Token and Spring Security Framework Roles       
+- User authentication (login/password)    
+- User authorization (JSON Web Token, Spring Security Framework Roles)         
 - CRUD operations with Role, Person, Room and Message entities  
 
 
@@ -65,7 +72,7 @@ _ROLE_ADMINS_ has the rights to any operations on the entities.
 
 _ROLE_USERS_ has the following rights:  
 
-- Roles: No rights  
+- Roles: no access         
 - Rooms: READ  
 - Person: READ, UPDATE, DELETE (only for own account)  
 - Message: READ (all), CREATE,  UPDATE (only for own account)  

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>a426de37-55ab-437b-b24a-7e402cf790f2.TABLE:chat.public.messages</OriginalElement>
+  <nodes>
+    <node x="266.0" y="135.0">a426de37-55ab-437b-b24a-7e402cf790f2.TABLE:chat.public.persons</node>
+    <node x="75.0" y="-14.0">a426de37-55ab-437b-b24a-7e402cf790f2.TABLE:chat.public.roles</node>
+    <node x="-103.0" y="135.0">a426de37-55ab-437b-b24a-7e402cf790f2.TABLE:chat.public.rooms</node>
+    <node x="68.5" y="318.0">a426de37-55ab-437b-b24a-7e402cf790f2.TABLE:chat.public.messages</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="a426de37-55ab-437b-b24a-7e402cf790f2.TABLE:chat.public.messages" target="a426de37-55ab-437b-b24a-7e402cf790f2.TABLE:chat.public.persons" relationship="REFERENCES">
+      <point x="41.5" y="-78.5" />
+      <point x="193.0" y="293.0" />
+      <point x="349.5" y="293.0" />
+      <point x="0.0" y="66.5" />
+    </edge>
+    <edge source="a426de37-55ab-437b-b24a-7e402cf790f2.TABLE:chat.public.messages" target="a426de37-55ab-437b-b24a-7e402cf790f2.TABLE:chat.public.rooms" relationship="REFERENCES">
+      <point x="-41.5" y="-78.5" />
+      <point x="110.0" y="293.0" />
+      <point x="-22.5" y="293.0" />
+      <point x="0.0" y="42.5" />
+    </edge>
+    <edge source="a426de37-55ab-437b-b24a-7e402cf790f2.TABLE:chat.public.persons" target="a426de37-55ab-437b-b24a-7e402cf790f2.TABLE:chat.public.roles" relationship="REFERENCES">
+      <point x="0.0" y="-66.5" />
+      <point x="349.5" y="110.0" />
+      <point x="151.5" y="110.0" />
+      <point x="0.0" y="42.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="174.0" y="247.0" />
+  <SelectedNodes>
+    <node>a426de37-55ab-437b-b24a-7e402cf790f2.TABLE:chat.public.rooms</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
