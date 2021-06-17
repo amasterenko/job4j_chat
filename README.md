@@ -44,10 +44,9 @@ and then run the JAR file, as follows:
 ```
 java -jar target/job4j_chat-1.0.jar
 ```
-The API's address by default:  http://localhost:8080/.  
+Default server URL:  http://localhost:8080/.  
 
-### Description and examples  
-URLs  _/sign-up_ and _/sign-in_ are accessible without authentication.    
+Endpoints  _/sign-up_ and _/sign-in_ are accessible without authentication.    
 
 #### Person(user) registration:
 ```
@@ -64,7 +63,7 @@ Request body: {"name":"userName", "password":"userPassword"}
 Response header: Authorization: Bearer ___jwtToken___  
 ```
 #### JWT authorization:  
-To pass the authorization, a token should be placed in each authorization HTTP-request's header.  
+To pass the authorization, the token must be placed in each authorization HTTP-request header.  
 
 #### Role-based authorization:  
 There are two built-in roles in the project.  
