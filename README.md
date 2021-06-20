@@ -1,7 +1,6 @@
 # REST API Chat  
 [![Build Status](https://travis-ci.com/amasterenko/job4j_chat.svg?branch=master)](https://travis-ci.com/amasterenko/job4j_chat)  
 
----  
 This project demonstrates the principles of the following technologies:
 - Spring Boot (Web, Data, Security)  
 - REST API  
@@ -9,6 +8,11 @@ This project demonstrates the principles of the following technologies:
 - PostgreSQL   
 - Maven  
 - Travis C.I.  
+
+### Features
+- User authentication (login/password)
+- User authorization (JSON Web Token, Spring Security Framework Roles)
+- CRUD operations with Role, Person, Room and Message entities
 
 ### Basic diagram of the app  
 
@@ -18,12 +22,6 @@ This project demonstrates the principles of the following technologies:
 
 ![ScreenShot](img/dbschema.png)
   
-### Features
-- User authentication (login/password)    
-- User authorization (JSON Web Token, Spring Security Framework Roles)         
-- CRUD operations with Role, Person, Room and Message entities  
-
-
 ### Configuration:    
 Create a PostgreSQL database with the name _chat_ and add the credentials to _/resources/application.properties_.
 The default ones are :
